@@ -16,7 +16,7 @@ Faça só quando o Oséias pedir. Escreva **em inglês**, para o mesmo público 
 11. **Rodapé:** nota do teste, "individual results vary", "cosmetic, not intended to diagnose, treat, cure or prevent any disease" e "see a dermatologist if a spot changes".
 
 ## Regras que não se negociam
-- **Nunca invente depoimento, resultado, foto, médico, autor ou avaliação.** A história em primeira pessoa só entra com uma pessoa real e autorizada. Até lá, deixe [colchetes] e ofereça uma "Version B" em segunda pessoa, sem depoimento.
+- **Nunca invente depoimento, resultado, foto, médico, autor ou avaliação.** A história em primeira pessoa só entra com uma pessoa real e autorizada. Sem uma pessoa real, escreva uma peça editorial **completa**, sem narradora fictícia. Não entregue só uma abertura com "continue daqui".
 - Não imite site de notícia nem use nome de veículo.
 - Frase de cliente entra como **fala do público**, nunca como estudo ou estatística.
 - Valem as proibições do brief: claims só da página oficial e o que estiver em "Do not say".
