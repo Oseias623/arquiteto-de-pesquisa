@@ -12,6 +12,7 @@ Antes de começar, leia:
 - `references/regras.md` — regras de conteúdo que todo subagente deve seguir (cole-as no prompt de cada um).
 - `references/planilha.md` — esquema exato das 10 abas.
 - `references/brief.md` — modelo do brief (etapa 2), só quando o Oséias pedir.
+- `references/advertorial.md` — advertorial (etapa 2b), um por brief, só quando o Oséias pedir.
 
 ## Modo híbrido (Mac coleta, VPS processa)
 Use quando o Oséias pedir "híbrido" ou quando você estiver na VPS (Hermes). A divisão existe porque a Meta, o Reddit, o TikTok e o YouTube bloqueiam IP de servidor.
