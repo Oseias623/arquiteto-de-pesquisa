@@ -28,7 +28,7 @@ gcloud auth login --enable-gdrive-access --no-launch-browser
 ```
 Abra o link no seu computador, entre com a conta editora da pasta e cole o código **como texto** no terminal da VPS.
 
-**Navegador (Facebook, Reddit e TikTok).** A VPS não tem tela. O login é feito uma vez, pelo seu Chrome, através de um túnel SSH:
+**Navegador (Facebook, Reddit e TikTok).** **No modo híbrido, pule esta parte:** a VPS não navega. Só faça isto se quiser a VPS coletando sozinha. A VPS não tem tela. O login é feito uma vez, pelo seu Chrome, através de um túnel SSH:
 1. Na VPS, abra o Chromium sem tela, com perfil fixo e porta de depuração **só em localhost**:
    ```sh
    CHROME=$(ls -d ~/.cache/ms-playwright/chromium-*/chrome-linux*/chrome | head -1)
@@ -45,7 +45,41 @@ Abra o link no seu computador, entre com a conta editora da pasta e cole o códi
 
 Esse perfil vale como senha: deixe a pasta com `chmod 700` e nunca a copie para o repositório.
 
-## 4. O ponto fraco: IP de datacenter
+## Modo híbrido (o modo escolhido)
+A divisão é por quem acessa a internet:
+
+| Mac (Overclock, IP de casa) | VPS (Hermes, sem navegador) |
+|---|---|
+| produto, palavras-chave, Biblioteca da Meta, concorrentes | transcrição dos vídeos (whisper) |
+| Reddit, TikTok, comentários do YouTube e do TikTok | síntese: padrões, lacunas, big idea |
+| classificação e **download** dos 10–12 vídeos | planilha, upload no Drive e conferência |
+
+Os dados vão do Mac para a VPS por **SSH** (`scripts/sincronizar.sh`) e não passam pelo GitHub. O código vai pelo Git, com `git pull` nas duas máquinas.
+
+### Ligar uma vez (no Mac)
+1. Crie uma chave só para isso e instale na VPS:
+   ```sh
+   ssh-keygen -t ed25519 -f ~/.ssh/pesquisa_vps -C pesquisa-vps
+   ssh-copy-id -i ~/.ssh/pesquisa_vps.pub usuario@IP_DA_VPS
+   ```
+2. Em `~/.ssh/config`, coloque:
+   ```
+   Host pesquisa-vps
+     HostName IP_DA_VPS
+     User usuario
+     IdentityFile ~/.ssh/pesquisa_vps
+   ```
+3. No `.env` do repositório no Mac (fora do Git), coloque `PESQUISA_VPS=pesquisa-vps:arquiteto-de-pesquisa`.
+4. Rode `sh scripts/sincronizar.sh testar`. A resposta esperada é `ok: VPS e repositório encontrados`.
+
+Na VPS, o único login necessário é o do `gcloud` (passo 3), para subir no Drive. A VPS não precisa de Facebook, Reddit nem TikTok.
+
+### Usar
+1. **No Mac (Overclock):** peça a pesquisa no modo híbrido, por exemplo: "pesquisa o produto X, modo híbrido". O orquestrador coleta tudo, baixa os vídeos e roda `sincronizar.sh enviar <produto>`.
+2. **Na VPS (Hermes, por SSH ou pelo canal que você ligou ao Hermes):** peça "processa a pesquisa <produto>". O Hermes transcreve, sintetiza, monta a planilha e atualiza o Drive.
+3. **Opcional:** para trazer de volta ao Mac, rode `sh scripts/sincronizar.sh receber <produto>`.
+
+## 4. Por que híbrido: IP de datacenter
 A Meta, o Reddit, o TikTok e o YouTube bloqueiam muito mais os IPs de servidor do que o IP de casa. Na prática:
 
 | Etapa | Na VPS |

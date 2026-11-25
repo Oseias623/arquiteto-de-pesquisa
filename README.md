@@ -74,7 +74,7 @@ Nenhum login fica salvo no repositório. Cada um fica no navegador ou na ferrame
   { "mcpServers": { "playwright": { "command": "npx", "args": ["@playwright/mcp@latest", "--user-data-dir", "~/.playwright-pesquisa"] } } }
   ```
 
-- **Hermes Agent (VPS):** usa o mesmo formato de skill. `sh scripts/instalar_vps.sh` instala tudo e liga a skill em `~/.hermes/skills/`. Logins sem tela e limites de IP de servidor estão em [docs/VPS-HERMES.md](docs/VPS-HERMES.md).
+- **Hermes Agent (VPS):** usa o mesmo formato de skill. `sh scripts/instalar_vps.sh` instala tudo e liga a skill em `~/.hermes/skills/`. Para usar no **modo híbrido** (o Mac coleta, a VPS processa), veja os passos em [docs/VPS-HERMES.md](docs/VPS-HERMES.md).
 
 ### 5. Rodar
 Abra o agente na pasta do repositório e peça, por exemplo:
@@ -115,6 +115,8 @@ AGENTS.md / CLAUDE.md / GEMINI.md     instruções de entrada para cada CLI
                                       classificador-referencias, transcritor, sintetizador
 .agents/skills/                       atalho (link) para a mesma skill, para o Codex
 scripts/verificar_ambiente.sh         confere ferramentas e logins
+scripts/instalar_vps.sh               instala tudo numa VPS Ubuntu e liga a skill no Hermes
+scripts/sincronizar.sh                modo híbrido: envia/recebe a pasta da pesquisa Mac ⇄ VPS por SSH
 ```
 
 ## Atualizações

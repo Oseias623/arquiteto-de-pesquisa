@@ -12,6 +12,23 @@ Antes de começar, leia:
 - `references/regras.md` — regras de conteúdo que todo subagente deve seguir (cole-as no prompt de cada um).
 - `references/planilha.md` — esquema exato das 10 abas.
 
+## Modo híbrido (Mac coleta, VPS processa)
+Use quando o Oséias pedir "híbrido" ou quando você estiver na VPS (Hermes). A divisão existe porque a Meta, o Reddit, o TikTok e o YouTube bloqueiam IP de servidor.
+- **Mac (Overclock, IP de casa): tudo que acessa os sites.**
+  1. Faça os Passos 0 a 3 completos: produto, palavras-chave, Meta, concorrentes, Reddit, TikTok e o `coletar.py`.
+  2. Rode o `classificador-referencias`.
+  3. Baixe os 10–12 vídeos de `para_transcrever` **sem transcrever**: `python3 scripts/transcrever.py 'https://www.facebook.com/ads/library/?id=ID' --so-baixar --pasta pesquisas/[produto]/videos`. Renomeie cada arquivo para `NN_marca_tema_ID.mp4`.
+  4. Grave `pesquisas/[produto]/etapa.json` com `{"etapa": "coleta_ok", "data": "AAAA-MM-DD", "pasta_drive": "<id>", "planilha_drive": "<id ou null>"}`.
+  5. Envie com `sh scripts/sincronizar.sh enviar [produto]`, na raiz do repositório.
+  6. Diga ao Oséias que a coleta foi enviada e qual pedido fazer ao Hermes: "processa a pesquisa [produto]".
+- **VPS (Hermes): só arquivos locais, sem navegador.** Ao receber "processa a pesquisa [produto]":
+  1. Confira em `etapa.json` que a etapa é `coleta_ok`.
+  2. Transcreva cada mp4 de `videos/` pelo **arquivo** (Passo 4), um por vez.
+  3. Siga os Passos 5 a 7 e suba no Drive. Use `--atualizar` se `planilha_drive` vier preenchido.
+  4. Grave `etapa.json` com `"etapa": "entregue"` e o link da planilha.
+  - Se faltar algum arquivo da coleta, **não** tente buscar na internet. Registre em *IA e o que travou* e peça ao Mac.
+- O Mac pode trazer o resultado de volta com `sh scripts/sincronizar.sh receber [produto]`. Os dados da pesquisa nunca passam pelo Git.
+
 ## Passo 0 — Briefing
 Precisa de: produto (nome exato), link oficial, país da Biblioteca (não presumir BR), idioma dos anúncios, ângulo/dor, modelo de venda (afiliado, DTC, infoproduto…), destino (pasta do Drive ou pasta local). Pergunte **só** o que faltar, numa mensagem. Com o mínimo, comece.
 

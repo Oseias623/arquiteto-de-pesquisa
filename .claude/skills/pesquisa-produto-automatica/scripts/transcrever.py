@@ -3,6 +3,7 @@
 
 Uso:
   python3 transcrever.py VIDEO [--frames 16] [--modelo small] [--idioma auto] [--preciso] [--pasta DIR] [--saida x.json]
+  python3 transcrever.py VIDEO --so-baixar --pasta DIR     # só baixa (modo híbrido)
 
 VIDEO = arquivo local, link da Biblioteca da Meta (…/ads/library/?id=ID) ou qualquer URL que o yt-dlp baixe.
 
@@ -182,6 +183,8 @@ def main():
     ap.add_argument("--preciso", action="store_true", help="beam search 5 (≈2,8x mais lento; só p/ fala difícil)")
     ap.add_argument("--pasta", help="onde guardar vídeo/áudio/mosaicos (padrão: pasta temporária)")
     ap.add_argument("--saida", help="grava o JSON também neste arquivo")
+    ap.add_argument("--so-baixar", action="store_true",
+                    help="só baixa o vídeo para --pasta e sai (modo híbrido: o Mac baixa, a VPS transcreve)")
     a = ap.parse_args()
 
     t0 = time.time()
@@ -220,6 +223,9 @@ def main():
         fim(0)
     out["arquivo"] = os.path.abspath(arq)
     out["duracao"] = duracao(arq)
+    if a.so_baixar:
+        out["texto"] = "só baixado (--so-baixar): transcrever depois pelo arquivo"
+        fim(0)
     nome = os.path.splitext(os.path.basename(arq))[0]
 
     # 2. mosaico (independe do whisper)
