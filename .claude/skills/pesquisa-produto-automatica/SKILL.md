@@ -11,6 +11,7 @@ Você é o **orquestrador**. Distribua o trabalho entre trabalhadores (panes no 
 Antes de começar, leia:
 - `references/regras.md` — regras de conteúdo que todo subagente deve seguir (cole-as no prompt de cada um).
 - `references/planilha.md` — esquema exato das 10 abas.
+- `references/brief.md` — modelo do brief (etapa 2), só quando o Oséias pedir.
 
 ## Modo híbrido (Mac coleta, VPS processa)
 Use quando o Oséias pedir "híbrido" ou quando você estiver na VPS (Hermes). A divisão existe porque a Meta, o Reddit, o TikTok e o YouTube bloqueiam IP de servidor.
@@ -116,7 +117,7 @@ Releia a planilha e confira:
 - [ ] claims do produto só da página oficial (aba Produto, com fonte)
 - [ ] bloqueios registrados em *IA e o que travou*; fontes com URL em *Fontes*
 
-Entrega no chat (até 10 linhas): 3–5 achados acionáveis, principais limitações, link/arquivo da planilha. Ofereça a etapa 2 (brief como nova aba no Google Doc de briefs).
+Entrega no chat (até 10 linhas): 3–5 achados acionáveis, principais limitações, link/arquivo da planilha. Ofereça a etapa 2: o brief, **no modelo de `references/brief.md`** (perguntas Psychology → Production → CTA, um brief por hipótese de teste).
 
 ## Se o Oséias tiver swipe
 Referências que ele aprovar entram no swipe dele (aba *Índice*) no formato que já existe lá — só com aprovação.
