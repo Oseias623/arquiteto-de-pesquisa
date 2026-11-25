@@ -1,4 +1,4 @@
-# Esquema da planilha (padrão do Oséias)
+# Esquema da planilha (padrão do usuário)
 
 Gabarito: `gabarito/Pesquisa dark spots (Lumi) - EUA.xlsx` (dump célula a célula em `gabarito/lumi_dump.txt`).
 O que está entre `[ ]` é o que muda por produto; o resto é literal. O script `scripts/montar_planilha.py`
@@ -19,7 +19,7 @@ já aplica tudo isto: o JSON leva só o conteúdo.
 | Linha 3 | Vazia, exceto em *Candidatos* (data da consulta) |
 | Linha 4 | Cabeçalho: fundo `1E3863`, texto branco, negrito, Arial 10, quebra de texto, alinhado no topo |
 | Linha 5+ | Dados: Arial 10, quebra de texto, alinhado no topo |
-| Amarelo `FFF2CC` | Colunas que o Oséias preenche com as palavras dele. Pintar em **todas as linhas de dados** da coluna. Em geral ficam **vazias** (a IA não escreve o raciocínio dele) |
+| Amarelo `FFF2CC` | Colunas que o usuário preenche com as palavras dele. Pintar em **todas as linhas de dados** da coluna. Em geral ficam **vazias** (a IA não escreve o raciocínio dele) |
 | Links | Célula que é só uma URL vira hyperlink, fonte azul `0000FF` |
 | Datas | Sempre fórmula `DATE(a,m,d)`, formato `dd/mm/yyyy`; dias = data da consulta − `DATE(...)`, formato `0` |
 | Percentuais | `IF(total=0,0,n/total)`, formato `0%` |
@@ -99,7 +99,7 @@ já aplica tudo isto: o JSON leva só o conteúdo.
 Antigo `Amostra 3 marcas` (3 marcas por volume de anúncios). O script aceita a chave antiga (`amostra_3_marcas`) e JSON sem o quadro nem as colunas novas; o gabarito ainda tem o nome antigo e 3 marcas.
 - A1: `Amostra dos concorrentes diretos: todos os anúncios ativos sobre [nicho] de até 5 concorrentes (Biblioteca de Anúncios Meta, [país]). [recorte de cada marca]`
 - **A2** `Data da consulta` · **C2** `=DATE(aaaa,m,d)` · **E2** `Colunas G, H, I e R têm lista suspensa para contar os padrões no quadro ao lado (coluna U em diante).`
-- Linha 4: **A** `#` · **B** `Marca` · **C** `Título na Biblioteca` · **D** `Link` · **E** `Ativo desde` (`=DATE(...)`) · **F** `Dias ativos` (`=$C$2-E5`, `0`) · **G** `Formato (categoria)` · **H** `Ângulo (categoria)` · **I** `Mecanismo (categoria)` · **J** `Gancho transcrito (1ª frase do texto)` · **K** `Ângulo (descrição)` (**AMARELA, vazia**) · **L** `Mecanismo (descrição)` (**AMARELA, vazia**) · **M** `Prova / autoridade usada` · **N** `Oferta / CTA` · **O** `Alerta de compliance para [marca]` · **P** `Observações` · **Q** `Serve para [produto]?` (texto livre) · **R** `Prova (categoria)` · **S** `O que modelar deste concorrente` (**AMARELA, vazia**: o Oséias escreve)
+- Linha 4: **A** `#` · **B** `Marca` · **C** `Título na Biblioteca` · **D** `Link` · **E** `Ativo desde` (`=DATE(...)`) · **F** `Dias ativos` (`=$C$2-E5`, `0`) · **G** `Formato (categoria)` · **H** `Ângulo (categoria)` · **I** `Mecanismo (categoria)` · **J** `Gancho transcrito (1ª frase do texto)` · **K** `Ângulo (descrição)` (**AMARELA, vazia**) · **L** `Mecanismo (descrição)` (**AMARELA, vazia**) · **M** `Prova / autoridade usada` · **N** `Oferta / CTA` · **O** `Alerta de compliance para [marca]` · **P** `Observações` · **Q** `Serve para [produto]?` (texto livre) · **R** `Prova (categoria)` · **S** `O que modelar deste concorrente` (**AMARELA, vazia**: o usuário escreve)
 - A–Q como no gabarito; R e S foram acrescentadas no fim para não mexer nas colunas que ele já conhece. **B (Marca) usa exatamente o nome do quadro** (é o que o `COUNTIF` conta).
 - Dropdowns (do nicho; base do gabarito):
   - G: `UGC de criadora (parceria), UGC (vários vídeos, mesmo texto), Vídeo da marca, Estático de produto, Estático com rosto/montagem`
@@ -167,9 +167,9 @@ Antigo `Amostra 3 marcas` (3 marcas por volume de anúncios). O script aceita a 
 
 ---
 
-## Apêndice — Swipe do Oséias (aba `Índice`)
+## Apêndice — Swipe de referências (opcional, aba `Índice`)
 
-Gabarito: `gabarito/Swipe - Indice.xlsx` (dump em `gabarito/indice_dump.txt`). Só entra referência que **ele aprovar**.
+Se o usuário tiver um gabarito local, ele fica em `gabarito/` (ignorado pelo Git). Só entra referência que **ele aprovar**.
 Use `scripts/adicionar_ao_swipe.py` (acrescenta no fim, pula ID repetido, e com `--reparar-ids` corrige os IDs numéricos usando o link).
 
 - Uma aba só: `Índice`. **Cabeçalho na linha 1** (fundo `EDEDED`, negrito, texto preto), dados a partir da linha 2. **Freeze E2** (linha 1 + colunas A–D).

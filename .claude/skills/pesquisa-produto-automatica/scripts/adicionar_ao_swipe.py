@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Acrescenta referências APROVADAS pelo Oséias na aba Índice do swipe (formato de references/planilha.md, Apêndice).
+"""Acrescenta referências APROVADAS pelo usuário na aba Índice do swipe (formato de references/planilha.md, Apêndice).
 
 Uso:
   python3 adicionar_ao_swipe.py swipe.xlsx entrada.json [saida.xlsx] [--reparar-ids]

@@ -17,7 +17,7 @@ git clone https://github.com/Oseias623/arquiteto-de-pesquisa.git && cd arquiteto
 sh scripts/instalar_vps.sh        # apt, yt-dlp+curl-cffi, whisper.cpp, Chromium, link da skill no Hermes
 sh scripts/verificar_ambiente.sh
 ```
-Para clonar um repositório privado, entre antes com `gh auth login` ou use uma *deploy key* só de leitura. Não cole token na URL do git.
+O repositório é público: o clone por HTTPS não pede login. Se você usar um fork privado, entre antes com `gh auth login` ou use uma *deploy key* só de leitura. Não cole token na URL do git.
 
 Depois, inicie o Hermes **na pasta do repositório**, para os scripts acharem os caminhos relativos e o `AGENTS.md`. Rode `hermes` e peça a pesquisa normalmente.
 

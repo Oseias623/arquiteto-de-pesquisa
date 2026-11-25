@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Monta a planilha da pesquisa (.xlsx) no padrão do Oséias a partir de um JSON.
+"""Monta a planilha da pesquisa (.xlsx) no padrão do usuário a partir de um JSON.
 
 Uso:  python3 montar_planilha.py entrada.json saida.xlsx [--estrito]
       (--estrito: sai com código 1 se houver avisos de verificação)

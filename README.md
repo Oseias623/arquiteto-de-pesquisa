@@ -10,6 +10,19 @@ O resultado é uma planilha de 10 abas com referências, transcrições, padrõe
 
 Funciona no **Claude Code**, no **Overclock**, no **Codex**, no **Gemini CLI** e no **Hermes Agent** (inclusive numa VPS).
 
+## Comece aqui (resumo)
+1. **Escolha um agente que roda no seu computador**, porque a pesquisa executa scripts e abre navegador:
+   - **Claude Code** (assinatura Claude);
+   - **Codex CLI** (entra com a conta do ChatGPT);
+   - **Gemini CLI** (conta Google).
+
+   Os chats no navegador (claude.ai, chatgpt.com, gemini.google.com) **não** rodam este projeto.
+2. Clone o repositório e instale as ferramentas (passos 1 e 2 abaixo).
+3. Faça login com **as suas contas**: Facebook, Reddit e TikTok no navegador do agente, e Google no `gcloud`. A planilha, os vídeos, os briefs e os advertoriais vão para o **seu** Google Drive, na pasta que você indicar.
+4. Abra o agente na pasta do repositório e peça: *"pesquisa o produto X (link), país, idioma, dor, modelo de venda, pasta do Drive"*.
+
+Nada é enviado para o autor do projeto: tudo fica na sua máquina e no seu Drive.
+
 ---
 
 ## Passo a passo para quem vai usar
@@ -45,7 +58,7 @@ Nenhum login fica salvo no repositório. Cada um fica no navegador ou na ferrame
 
    O agente só **lê**: ele não curte, não segue, não comenta e não clica em botões do TikTok.
 
-2. **Google Drive (opcional, para subir direto).** A conta que você usar precisa ser **Editora** da pasta de destino no Drive. Se a pasta for de outra conta, peça ao dono para compartilhá-la com você como Editor.
+2. **Google Drive (opcional, para subir direto).** Os arquivos vão para o Drive da conta que você logar aqui, na pasta que você indicar no pedido; sem pasta, o agente cria `Pesquisas/<produto>/`. A conta precisa ser dona ou **Editora** da pasta de destino. Se a pasta for de outra conta, peça ao dono para compartilhá-la com você como Editor.
    ```sh
    gcloud auth login --enable-gdrive-access --no-launch-browser
    ```

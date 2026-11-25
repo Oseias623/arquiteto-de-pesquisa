@@ -1,6 +1,6 @@
 # Advertorial (etapa 2b) — um por brief
 
-Faça só quando o Oséias pedir. Escreva **em inglês**, para o mesmo público e com a mesma ideia central do brief. O caminho é: anúncio → advertorial → página do produto na loja de afiliado.
+Faça só quando o usuário pedir. Escreva **em inglês**, para o mesmo público e com a mesma ideia central do brief. O caminho é: anúncio → advertorial → página do produto na loja de afiliado.
 
 ## Estrutura
 1. **Notas de produção** num bloco de citação no topo (apagar antes de publicar). Elas dizem o público, de onde vem o tráfego, o destino final e os [colchetes] a preencher.

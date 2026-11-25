@@ -1,28 +1,28 @@
 ---
 name: pesquisa-produto-automatica
-description: Pesquisa completa de anúncios para um produto (etapa 1) — Biblioteca de Anúncios da Meta, ≥10 referências, transcrições, voz do cliente, padrões, lacunas e big idea — entregue numa planilha no padrão do Oséias. Use quando ele trouxer um produto para pesquisar, pedir "pesquisa esse produto", "espiona o nicho de X" ou "vamos anunciar X".
+description: Pesquisa completa de anúncios para um produto (etapa 1) — Biblioteca de Anúncios da Meta, ≥10 referências, transcrições, voz do cliente, padrões, lacunas e big idea — entregue numa planilha no padrão do usuário. Use quando ele trouxer um produto para pesquisar, pedir "pesquisa esse produto", "espiona o nicho de X" ou "vamos anunciar X".
 ---
 
 # Pesquisa automática por produto (etapa 1)
 
-Você é o **orquestrador**. Distribua o trabalho entre trabalhadores (panes no Overclock, subagentes fora dele), junte os resultados, monte a planilha e verifique. **Não escreva brief nem anúncio**: a pesquisa termina na planilha. Brief (etapa 2) e anúncio com 5–6 ganchos + 1 body (etapa 3) só quando o Oséias pedir.
+Você é o **orquestrador**. Distribua o trabalho entre trabalhadores (panes no Overclock, subagentes fora dele), junte os resultados, monte a planilha e verifique. **Não escreva brief nem anúncio**: a pesquisa termina na planilha. Brief (etapa 2) e anúncio com 5–6 ganchos + 1 body (etapa 3) só quando o usuário pedir.
 
 <!-- Não escreva cifrão seguido de número neste arquivo: o carregador de skills troca esses trechos pelos argumentos da chamada. Fórmulas com referência absoluta ficam só em references/planilha.md. -->
 Antes de começar, leia:
 - `references/regras.md` — regras de conteúdo que todo subagente deve seguir (cole-as no prompt de cada um).
 - `references/planilha.md` — esquema exato das 10 abas.
-- `references/brief.md` — modelo do brief (etapa 2), só quando o Oséias pedir.
-- `references/advertorial.md` — advertorial (etapa 2b), um por brief, só quando o Oséias pedir.
+- `references/brief.md` — modelo do brief (etapa 2), só quando o usuário pedir.
+- `references/advertorial.md` — advertorial (etapa 2b), um por brief, só quando o usuário pedir.
 
 ## Modo híbrido (Mac coleta, VPS processa)
-Use quando o Oséias pedir "híbrido" ou quando você estiver na VPS (Hermes). A divisão existe porque a Meta, o Reddit, o TikTok e o YouTube bloqueiam IP de servidor.
+Use quando o usuário pedir "híbrido" ou quando você estiver na VPS (Hermes). A divisão existe porque a Meta, o Reddit, o TikTok e o YouTube bloqueiam IP de servidor.
 - **Mac (Overclock, IP de casa): tudo que acessa os sites.**
   1. Faça os Passos 0 a 3 completos: produto, palavras-chave, Meta, concorrentes, Reddit, TikTok e o `coletar.py`.
   2. Rode o `classificador-referencias`.
   3. Baixe os 10–12 vídeos de `para_transcrever` **sem transcrever**: `python3 scripts/transcrever.py 'https://www.facebook.com/ads/library/?id=ID' --so-baixar --pasta pesquisas/[produto]/videos`. Renomeie cada arquivo para `NN_marca_tema_ID.mp4`.
   4. Grave `pesquisas/[produto]/etapa.json` com `{"etapa": "coleta_ok", "data": "AAAA-MM-DD", "pasta_drive": "<id>", "planilha_drive": "<id ou null>"}`.
   5. Envie com `sh scripts/sincronizar.sh enviar [produto]`, na raiz do repositório.
-  6. Diga ao Oséias que a coleta foi enviada e qual pedido fazer ao Hermes: "processa a pesquisa [produto]".
+  6. Diga ao usuário que a coleta foi enviada e qual pedido fazer ao Hermes: "processa a pesquisa [produto]".
 - **VPS (Hermes): só arquivos locais, sem navegador.** Ao receber "processa a pesquisa [produto]":
   1. Confira em `etapa.json` que a etapa é `coleta_ok`.
   2. Transcreva cada mp4 de `videos/` pelo **arquivo** (Passo 4), um por vez.
@@ -40,7 +40,7 @@ Precisa de: produto (nome exato), link oficial, país da Biblioteca (não presum
 | **Navegador logado** — no Overclock: `overclock_browser_act` (já logado em Facebook, Reddit e TikTok); fora dele: Claude in Chrome ou Playwright MCP | Biblioteca da Meta, Reddit, TikTok | Registre "varredura X não executada" em *IA e o que travou* e siga |
 | `yt-dlp` + Python 3 (`openpyxl`) | Voz do cliente no YouTube; montar a planilha | — |
 | `ffmpeg` + `whisper-cli` (whisper.cpp em `~/.local/bin`, modelo `~/.cache/whisper-cpp/ggml-small.bin`) | Baixar, transcrever e tirar frames dos vídeos: `python3 scripts/transcrever.py 'https://www.facebook.com/ads/library/?id=ID' --frames 16 --pasta pesquisas/[produto]/videos --saida pesquisas/[produto]/transcricoes/ID.json` (aceita arquivo, link da Meta ou URL do yt-dlp; ~75 s por minuto de áudio neste Mac) | O script devolve `fala_verificada: false`, "fala não verificada": transcrever pelas legendas queimadas do mosaico e declarar em *Cobertura* |
-| Google Drive MCP + `gcloud` (logado com `gcloud auth login --enable-gdrive-access`, conta editora da pasta) | MCP: ler o swipe e pesquisas anteriores · `gcloud`: **subir** a planilha e os vídeos (`scripts/subir_drive.py`) | Sem token do gcloud: entregue o `.xlsx` local e diga ao Oséias como logar |
+| Google Drive MCP + `gcloud` (logado com `gcloud auth login --enable-gdrive-access`, conta editora da pasta) | MCP: ler o swipe e pesquisas anteriores · `gcloud`: **subir** a planilha e os vídeos (`scripts/subir_drive.py`) | Sem token do gcloud: entregue o `.xlsx` local e diga ao usuário como logar |
 
 Pasta de trabalho da pesquisa: `pesquisas/[produto]/` (JSON intermediários, brutos e a planilha final). Todo trabalhador grava o resultado ali, não só no chat.
 
@@ -97,11 +97,11 @@ Monte 20–30 termos em 5 baldes — categoria específica ('dark spot serum', n
 `sintetizador` recebe tudo (produto, referências, transcrições, voz do cliente) e devolve as abas *B-E Padrões* e *F - Big ideas + lacuna*.
 
 ## Passo 6 — Montar a planilha
-Siga `references/planilha.md` à risca (10 abas, cabeçalho na linha 4, colunas amarelas vazias para o Oséias). Nome: `Pesquisa [ângulo] ([produto]) - [país]`.
+Siga `references/planilha.md` à risca (10 abas, cabeçalho na linha 4, colunas amarelas vazias para o usuário). Nome: `Pesquisa [ângulo] ([produto]) - [país]`.
 - **Monte o `.xlsx`** em `pesquisas/[produto]/`. Monte um JSON com o conteúdo (formato no topo do script) e rode:
   `python3 scripts/montar_planilha.py pesquisa.json "pesquisas/[produto]/Pesquisa [ângulo] ([produto]) - [país].xlsx" --estrito`
   O script já aplica cabeçalhos, cores, dropdowns, fórmulas (`LEN`, dias = data da consulta − `DATE(...)`, `COUNTA`/`AVERAGE`/`MEDIAN`/`COUNTIF`, `%`), blocos de contadores e freeze. Os avisos que ele imprime são pendências: corrija ou registre em *IA e o que travou*.
-- **Entrega padrão: direto no Drive**, na pasta do produto (`Swipe de Anúncios/[Área]/Ads - [Marca]/Produtos/[Produto]/` — ache o ID com o Drive MCP, `search_files` com `parentId = '…'`; crie a pasta do produto se faltar): `python3 scripts/subir_drive.py --pasta-id ID_DA_PASTA --planilha "…xlsx" --videos pesquisas/[produto]/videos`. Se já existir na pasta uma pesquisa do mesmo produto e ângulo (`search_files` pelo nome), **atualize-a** com `--atualizar ID_DA_PLANILHA` — mesmo link, e a versão anterior fica no Histórico de versões do Sheets; antes, exporte-a e confira se há texto do Oséias nas colunas amarelas (se houver, avise e não sobrescreva sem ele aprovar). Sem pesquisa anterior, o script sobe a planilha **convertida em Planilha Google** (nome repetido ganha data e hora) e os vídeos na subpasta `Referências (vídeos)`. Depois exporte a planilha convertida e confira fórmulas, listas e IDs (testado 2026-11-25: conversão íntegra, 8 vídeos/46 MB em 32 s). Não use o `create_file` do Drive MCP para isso: ele exige o arquivo em base64 dentro da conversa. Atualize a coluna 'Vídeo no Drive' da aba Transcrições com os links devolvidos.
+- **Entrega padrão: direto no Drive**, na pasta que o usuário indicou no briefing, **no Drive da própria conta dele** (a conta logada no `gcloud`; ache o ID pelo link da pasta ou com o Drive MCP, `search_files`; se ele não indicou, crie `Pesquisas/[Produto]/` no Drive dele e diga o link): `python3 scripts/subir_drive.py --pasta-id ID_DA_PASTA --planilha "…xlsx" --videos pesquisas/[produto]/videos`. Se já existir na pasta uma pesquisa do mesmo produto e ângulo (`search_files` pelo nome), **atualize-a** com `--atualizar ID_DA_PLANILHA` — mesmo link, e a versão anterior fica no Histórico de versões do Sheets; antes, exporte-a e confira se há texto do usuário nas colunas amarelas (se houver, avise e não sobrescreva sem ele aprovar). Sem pesquisa anterior, o script sobe a planilha **convertida em Planilha Google** (nome repetido ganha data e hora) e os vídeos na subpasta `Referências (vídeos)`. Depois exporte a planilha convertida e confira fórmulas, listas e IDs (testado 2026-11-25: conversão íntegra, 8 vídeos/46 MB em 32 s). Não use o `create_file` do Drive MCP para isso: ele exige o arquivo em base64 dentro da conversa. Atualize a coluna 'Vídeo no Drive' da aba Transcrições com os links devolvidos.
 - Se for editar células direto no Google Sheets (pt-BR), fórmulas com `;` → `=DATE(2026;11;24)`, `=COUNTIF(R5:R1000;T46)` (referências absolutas em `references/planilha.md`), e `'` antes de ID e de texto que começa com `= + - @ '`.
 - IDs da Meta sempre como texto (no JSON, string); categorias dos dropdowns = as da amostra.
 
@@ -120,5 +120,5 @@ Releia a planilha e confira:
 
 Entrega no chat (até 10 linhas): 3–5 achados acionáveis, principais limitações, link/arquivo da planilha. Ofereça a etapa 2: o brief, **no modelo de `references/brief.md`** (perguntas Psychology → Production → CTA, um brief por hipótese de teste).
 
-## Se o Oséias tiver swipe
-Referências que ele aprovar entram no swipe dele (aba *Índice*) no formato que já existe lá — só com aprovação.
+## Swipe (opcional)
+Se o usuário tiver um swipe de referências (planilha com aba *Índice*, formato no Apêndice de `references/planilha.md`), as referências que ele aprovar entram lá, só com aprovação. Sem swipe, pule.

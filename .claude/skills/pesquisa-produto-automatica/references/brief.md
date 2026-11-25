@@ -1,6 +1,6 @@
-# Brief (etapa 2) — modelo do Oséias
+# Brief (etapa 2) — modelo do usuário
 
-Faça o brief **só quando o Oséias pedir**, e um brief por anúncio, ou seja, por hipótese de teste. A fonte é a planilha da pesquisa. Não use nada que não esteja nela ou na página oficial.
+Faça o brief **só quando o usuário pedir**, e um brief por anúncio, ou seja, por hipótese de teste. A fonte é a planilha da pesquisa. Não use nada que não esteja nela ou na página oficial.
 
 ## Modelo (perguntas literais, nesta ordem)
 
@@ -47,7 +47,7 @@ Antes de fechar o brief, confira se tudo o que ele recomenda (outro produto da l
 Valem as regras de `regras.md`: nada de palavras proibidas, frases de cliente sem autor e claims só da página oficial. Para afiliado, anote a divulgação obrigatória (FTC nos EUA).
 
 ## Idioma
-**Tudo em inglês**, perguntas e respostas, para passar direto a criador ou editor americano. Frases de cliente e claims ficam verbatim. Os rótulos FATO, INTERPRETAÇÃO e HIPÓTESE viram FACT, INTERPRETATION e HYPOTHESIS. Use outro idioma só se o Oséias pedir.
+**Tudo em inglês**, perguntas e respostas, para passar direto a criador ou editor americano. Frases de cliente e claims ficam verbatim. Os rótulos FATO, INTERPRETAÇÃO e HIPÓTESE viram FACT, INTERPRETATION e HYPOTHESIS. Use outro idioma só se o usuário pedir.
 
 ## Entrega
 1. Escreva `pesquisas/[produto]/Brief [n] - [short idea].md` em Markdown: `##` para Psychology, Production e CTA, pergunta em **negrito**, listas com `-`, e o asterisco de nota escapado como `\*`.
