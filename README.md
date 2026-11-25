@@ -8,7 +8,7 @@ Este projeto faz pesquisa automática de anúncios por produto. Você informa o 
 
 O resultado é uma planilha de 10 abas com referências, transcrições, padrões, lacunas e big idea, que pode subir direto para o Google Drive. A planilha é a base para escrever anúncios novos a partir do que já funciona.
 
-Funciona no **Claude Code**, no **Overclock**, no **Codex** e no **Gemini CLI**.
+Funciona no **Claude Code**, no **Overclock**, no **Codex**, no **Gemini CLI** e no **Hermes Agent** (inclusive numa VPS).
 
 ---
 
@@ -73,6 +73,8 @@ Nenhum login fica salvo no repositório. Cada um fica no navegador ou na ferrame
   ```json
   { "mcpServers": { "playwright": { "command": "npx", "args": ["@playwright/mcp@latest", "--user-data-dir", "~/.playwright-pesquisa"] } } }
   ```
+
+- **Hermes Agent (VPS):** usa o mesmo formato de skill. `sh scripts/instalar_vps.sh` instala tudo e liga a skill em `~/.hermes/skills/`. Logins sem tela e limites de IP de servidor estão em [docs/VPS-HERMES.md](docs/VPS-HERMES.md).
 
 ### 5. Rodar
 Abra o agente na pasta do repositório e peça, por exemplo:

@@ -1,4 +1,4 @@
-# Arquiteto de pesquisa — instruções para qualquer agente (Claude Code, Codex, Gemini CLI…)
+# Arquiteto de pesquisa — instruções para qualquer agente (Claude Code, Codex, Gemini CLI, Hermes…)
 
 Este repositório faz **pesquisa de anúncios por produto**. Ele varre a Biblioteca de Anúncios da Meta e coleta a voz do cliente no YouTube, TikTok e Reddit. Depois transcreve os anúncios de referência e entrega uma planilha de 10 abas, que vira base para escrever anúncios novos.
 
@@ -7,6 +7,7 @@ Este repositório faz **pesquisa de anúncios por produto**. Ele varre a Bibliot
 2. Os "trabalhadores" do roteiro ficam em `.claude/agents/<nome>.md`. Esses arquivos são **instruções de papel**, não código.
    - **Claude Code:** use os subagentes de mesmo nome.
    - **Overclock:** um pane por trabalhador.
+   - **Hermes Agent:** a skill é lida de `~/.hermes/skills/research/` (link criado por `scripts/instalar_vps.sh`). Pode delegar papéis a subagentes, mas respeite o limite de navegadores. Na VPS, veja `docs/VPS-HERMES.md`.
    - **Codex / Gemini / outros sem subagentes:** execute cada papel você mesmo, em sequência, lendo o `.md` dele antes. Nesse caso, junte em uma etapa só as coletas que rodam por script.
 3. Tudo o que a pesquisa gera vai para `pesquisas/<produto>/`. Essa pasta é ignorada pelo Git.
 
