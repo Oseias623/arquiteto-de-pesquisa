@@ -1,0 +1,33 @@
+# --- Credenciais e segredos: NUNCA versionar ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials*.json
+client_secret*.json
+token*.json
+service-account*.json
+.config/gcloud/
+
+# --- Dados de pesquisa (ficam só na máquina / no Drive) ---
+pesquisas/
+gabarito/
+*.zip
+*.mp4
+*.mov
+*.webm
+*.m4a
+*.wav
+*.xlsx
+*.csv
+*.jsonl
+
+# --- Estado local de ferramentas ---
+.overclock-app/
+.claude/settings.local.json
+.claude/projects/
+__pycache__/
+*.pyc
+.DS_Store

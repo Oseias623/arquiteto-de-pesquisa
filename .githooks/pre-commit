@@ -1,0 +1,17 @@
+#!/bin/sh
+# Bloqueia commit com cara de segredo ou com dados de pesquisa.
+# Ativar uma vez por clone:  git config core.hooksPath .githooks
+falhou=0
+
+bloqueados=$(git diff --cached --name-only --diff-filter=ACM | grep -E '(^|/)(\.env$|\.env\.[^e]|pesquisas/|gabarito/)|\.(pem|key|p12|mp4|xlsx|zip)$|client_secret|service-account|credentials.*\.json' )
+if [ -n "$bloqueados" ]; then
+  echo "pre-commit: arquivos que não podem ir para o Git:"; echo "$bloqueados"; falhou=1
+fi
+
+padroes='(gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|ya29\.[A-Za-z0-9_-]{20,}|1//0[A-Za-z0-9_-]{20,}|4/0A[A-Za-z0-9_-]{20,}|AIza[0-9A-Za-z_-]{35}|sk-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|(SECRET|PASSWORD|SENHA|TOKEN)[A-Z_]*=[^[:space:]]{6,})'
+achados=$(git diff --cached -U0 --diff-filter=ACM | grep '^+' | grep -v '^+++' | grep -Eo "$padroes" | head -5)
+if [ -n "$achados" ]; then
+  echo "pre-commit: possível segredo no que vai ser commitado:"; echo "$achados" | sed 's/\(.\{8\}\).*/\1…/'; falhou=1
+fi
+
+[ $falhou -eq 0 ] || { echo "Commit bloqueado. Tire o arquivo/segredo (git restore --staged <arquivo>) e tente de novo."; exit 1; }
