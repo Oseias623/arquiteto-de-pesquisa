@@ -19,6 +19,8 @@ host=${PESQUISA_VPS%%:*}; rdir=${PESQUISA_VPS#*:}
 
 acao=$1; prod=$2
 SSH="ssh -o BatchMode=yes -o ConnectTimeout=10"
+# Chave dedicada (criada no Mac em ~/.ssh/pesquisa_vps), se existir
+[ -f "$HOME/.ssh/pesquisa_vps" ] && SSH="$SSH -i $HOME/.ssh/pesquisa_vps -o IdentitiesOnly=yes"
 case "$acao" in
   testar)
     $SSH "$host" "test -d '$rdir/.claude/skills/pesquisa-produto-automatica' && echo 'ok: VPS e repositório encontrados'" \

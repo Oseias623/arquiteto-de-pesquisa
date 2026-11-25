@@ -57,6 +57,8 @@ A divisão é por quem acessa a internet:
 Os dados vão do Mac para a VPS por **SSH** (`scripts/sincronizar.sh`) e não passam pelo GitHub. O código vai pelo Git, com `git pull` nas duas máquinas.
 
 ### Ligar uma vez (no Mac)
+> Mais fácil: cole [docs/PROMPT-HERMES.md](PROMPT-HERMES.md) no Hermes e ele prepara a VPS. Os passos abaixo são o caminho manual. O `sincronizar.sh` usa `~/.ssh/pesquisa_vps` sozinho quando essa chave existe.
+
 1. Crie uma chave só para isso e instale na VPS:
    ```sh
    ssh-keygen -t ed25519 -f ~/.ssh/pesquisa_vps -C pesquisa-vps
