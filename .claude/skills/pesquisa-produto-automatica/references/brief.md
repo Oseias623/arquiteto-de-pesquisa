@@ -42,6 +42,8 @@ Uma pergunta sem resposta sustentada pela pesquisa fica como `To be defined`, co
 | New test | F › hipótese de teste | variável única × controle, métrica principal e a regra de decisão (o que fazer se ganhar, perder ou empatar) |
 | Landing page | aba Produto (loja de afiliado), padrões de CTA | URL do destino; se não houver advertorial, diga isso e use a página do produto na loja |
 
+Antes de fechar o brief, confira se tudo o que ele recomenda (outro produto da linha, proteção, kit) está à venda no país e é declarado no rótulo. Não chame um teste de "mecanismo" (ver `advertorial.md`, lições 3, 4 e 9).
+
 Valem as regras de `regras.md`: nada de palavras proibidas, frases de cliente sem autor e claims só da página oficial. Para afiliado, anote a divulgação obrigatória (FTC nos EUA).
 
 ## Idioma
