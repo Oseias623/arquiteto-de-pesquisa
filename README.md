@@ -17,6 +17,8 @@ Funciona no **Claude Code**, no **Overclock**, no **Codex**, no **Gemini CLI** e
    - **Gemini CLI** (conta Google).
 
    Os chats no navegador (claude.ai, chatgpt.com, gemini.google.com) **não** rodam este projeto.
+
+   **Nunca instalou?** Siga o tutorial [Instalar o agente: Claude Code ou Codex](docs/INSTALAR-AGENTE.md), com passos para Mac e Windows.
 2. Clone o repositório e instale as ferramentas (passos 1 e 2 abaixo).
 3. Faça login com **as suas contas**: Facebook, Reddit e TikTok no navegador do agente, e Google no `gcloud`. A planilha, os vídeos, os briefs e os advertoriais vão para o **seu** Google Drive, na pasta que você indicar.
 4. Abra o agente na pasta do repositório e peça: *"pesquisa o produto X (link), país, idioma, dor, modelo de venda, pasta do Drive"*.
