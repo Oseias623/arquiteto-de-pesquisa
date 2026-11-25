@@ -44,5 +44,10 @@ Uma pergunta sem resposta sustentada pela pesquisa fica como `To be defined`, co
 
 Valem as regras de `regras.md`: nada de palavras proibidas, frases de cliente sem autor e claims só da página oficial. Para afiliado, anote a divulgação obrigatória (FTC nos EUA).
 
+## Idioma
+**Tudo em inglês**, perguntas e respostas, para passar direto a criador ou editor americano. Frases de cliente e claims ficam verbatim. Os rótulos FATO, INTERPRETAÇÃO e HIPÓTESE viram FACT, INTERPRETATION e HYPOTHESIS. Use outro idioma só se o Oséias pedir.
+
 ## Entrega
-Arquivo `pesquisas/[produto]/Brief [n] - [ideia curta].md`. No Drive, ele entra como aba nova no Google Doc de briefs do Oséias, se existir, ou como Doc na pasta do produto, mas só com aprovação dele.
+1. Escreva `pesquisas/[produto]/Brief [n] - [short idea].md` em Markdown: `##` para Psychology, Production e CTA, pergunta em **negrito**, listas com `-`, e o asterisco de nota escapado como `\*`.
+2. Suba como **Google Doc na pasta do produto** no Drive, ao lado da planilha. Use um upload multipart com a origem `text/markdown` e o destino `application/vnd.google-apps.document`, e o mesmo token do `gcloud` do `subir_drive.py`. O Drive converte títulos, negrito e listas.
+3. Confira exportando como `text/plain`: não pode sobrar `**` nem `#`, e o `26%*` precisa aparecer com o asterisco.
